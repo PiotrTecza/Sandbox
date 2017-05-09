@@ -9,19 +9,33 @@ namespace FlatListToTree
     {
         static void Main(string[] args)
         {
+            var strategyList = new List<ITreeModelBuilder>
+                {
+                    new TreeModelBuilder(),
+                    new TreeModelBuilder2(),
+                    new TreeModelBuilder3()
+                };
+
             while (true)
             {
                 Console.WriteLine("Number of nodes to generate:");
                 var nodeCount = Int32.Parse(Console.ReadLine());
                 var flatList = GenerateData(nodeCount);
 
-                var sw = Stopwatch.StartNew();
-                var treeModel = new TreeModelBuilder().Build(flatList);
-                Console.WriteLine($"Strategy1 - Time in ms: {sw.ElapsedMilliseconds}");
+                var results = new List<Tuple<string, long>>();
 
-                sw = Stopwatch.StartNew();
-                treeModel = new TreeModelBuilder2().Build(flatList);
-                Console.WriteLine($"Strategy2 - Time in ms: {sw.ElapsedMilliseconds}");
+                foreach (var strategy in strategyList)
+                {
+                    var sw = Stopwatch.StartNew();
+                    var treeModel = strategy.Build(flatList);
+                    results.Add(new Tuple<string,long>(strategy.StrategyName, sw.ElapsedMilliseconds));
+                }
+
+                results = results.OrderBy(x => x.Item2).ToList();
+                foreach(var result in results)
+                {
+                    Console.WriteLine($"{result.Item1} Time in ms: {result.Item2}");
+                }
             }
         }
 

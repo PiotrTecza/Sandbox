@@ -6,6 +6,8 @@ namespace FlatListToTree
 {
     public class TreeModelBuilder : ITreeModelBuilder
     {
+        public string StrategyName => "Strategy1";
+
         public TreeModel Build(List<FlatModel> flatModelList)
         {
             var treeDict = new Dictionary<Guid, TreeModel>();

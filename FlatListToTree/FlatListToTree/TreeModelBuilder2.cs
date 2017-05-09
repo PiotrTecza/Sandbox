@@ -6,6 +6,8 @@ namespace FlatListToTree
 {
     public class TreeModelBuilder2 : ITreeModelBuilder
     {
+        public string StrategyName => "Strategy2";
+
         public TreeModel Build(List<FlatModel> flatModelList)
         {
             var root = BuildTreeAndGetRoots(flatModelList);
