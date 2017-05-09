@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace FlatListToTree
 {
-    public class TreeModelBuilder
+    public class TreeModelBuilder : ITreeModelBuilder
     {
         public TreeModel Build(List<FlatModel> flatModelList)
         {

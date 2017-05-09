@@ -18,6 +18,10 @@ namespace FlatListToTree
                 var sw = Stopwatch.StartNew();
                 var treeModel = new TreeModelBuilder().Build(flatList);
                 Console.WriteLine($"Time in ms: {sw.ElapsedMilliseconds}");
+
+                sw = Stopwatch.StartNew();
+                treeModel = new TreeModelBuilder2().Build(flatList);
+                Console.WriteLine($"Time in ms: {sw.ElapsedMilliseconds}");
             }
         }
 
@@ -28,7 +32,6 @@ namespace FlatListToTree
 
             for(int i = 0; i<nodeCount; i++)
             {
-                
                 var parentId = Guid.NewGuid();
                 result.Add(new FlatModel { Id = id, ParentId = parentId });
                 id = parentId;
