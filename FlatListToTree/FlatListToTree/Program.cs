@@ -17,11 +17,11 @@ namespace FlatListToTree
 
                 var sw = Stopwatch.StartNew();
                 var treeModel = new TreeModelBuilder().Build(flatList);
-                Console.WriteLine($"Time in ms: {sw.ElapsedMilliseconds}");
+                Console.WriteLine($"Strategy1 - Time in ms: {sw.ElapsedMilliseconds}");
 
                 sw = Stopwatch.StartNew();
                 treeModel = new TreeModelBuilder2().Build(flatList);
-                Console.WriteLine($"Time in ms: {sw.ElapsedMilliseconds}");
+                Console.WriteLine($"Strategy2 - Time in ms: {sw.ElapsedMilliseconds}");
             }
         }
 

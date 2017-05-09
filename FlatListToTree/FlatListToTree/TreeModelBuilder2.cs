@@ -58,6 +58,14 @@ namespace FlatListToTree
             return root;
         }
 
+        private static TreeModel MapToTreeModel(CategoryItemNode categoryModel)
+        {
+            return new TreeModel()
+            {
+                Id = categoryModel.Value.Id
+            };
+        }
+
         private class StackModel
         {
             public TreeModel TreeModel { get; set; }
@@ -70,12 +78,5 @@ namespace FlatListToTree
             }
         }
 
-        private static TreeModel MapToTreeModel(CategoryItemNode categoryModel)
-        {
-            return new TreeModel()
-            {
-                Id = categoryModel.Value.Id
-            };
-        }
     }
 }
